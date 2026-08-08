@@ -32,11 +32,14 @@ build/
 ### VS Code ###
 .vscode/
 
-### Node / Vite ###
+### Node / Vite / Secrets ###
 node_modules/
 PulseSocial-Frontend/node_modules/
 PulseSocial-Frontend/dist/
 .DS_Store
 *.log
 uploads/
+token.txt
+*.txt
+
 
