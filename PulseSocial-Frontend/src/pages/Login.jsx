@@ -70,7 +70,17 @@ function Login() {
                     <h2>Blitzor Login</h2>
                 </div>
 
-                {error && <div className="auth-error">{error}</div>}
+                {error && (
+                    <div className="auth-error" style={{ lineHeight: "1.4" }}>
+                        {error}
+                        {(error.toLowerCase().includes("unauthorized") || error.toLowerCase().includes("invalid")) && (
+                            <div style={{ marginTop: "6px", fontSize: "0.85rem" }}>
+                                Need an account? <Link to="/register" style={{ color: "#ec4899", fontWeight: "600", textDecoration: "underline" }}>Register here</Link>
+                            </div>
+                        )}
+                    </div>
+                )}
+
 
                 <form onSubmit={submitLogin}>
                     <div className="form-group">
