@@ -63,16 +63,22 @@ function Bookmarks() {
             <main className="main-content-area">
                 <div className="feed-container">
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
-                        <div>
-                            <h2>🔖 Saved Collections</h2>
-                            <p style={{ color: "var(--text-muted)" }}>
-                                Organize your saved posts into custom collection folders.
-                            </p>
+                        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                            <button className="back-btn" onClick={() => navigate(-1)} title="Go Back">
+                                ← Back
+                            </button>
+                            <div>
+                                <h2 style={{ margin: 0 }}>🔖 Saved Collections</h2>
+                                <p style={{ color: "var(--text-muted)", margin: "4px 0 0 0" }}>
+                                    Organize your saved posts into custom collection folders.
+                                </p>
+                            </div>
                         </div>
                         <button className="btn-primary" style={{ width: "auto" }} onClick={() => setShowCreateModal(true)}>
                             + New Collection
                         </button>
                     </div>
+
 
                     {/* Collection Filter Pills */}
                     <div style={{ display: "flex", gap: "10px", overflowX: "auto", paddingBottom: "8px", marginBottom: "24px" }}>

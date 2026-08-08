@@ -62,10 +62,18 @@ function Notifications() {
 
             <main className="main-content-area">
                 <div className="feed-container">
-                    <h2>🔔 Activity Notifications</h2>
-                    <p style={{ color: "var(--text-muted)", marginBottom: "20px" }}>
-                        Recent interactions, message alerts, and updates.
-                    </p>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "16px" }}>
+                        <button className="back-btn" onClick={() => navigate(-1)} title="Go Back">
+                            ← Back
+                        </button>
+                        <div>
+                            <h2 style={{ margin: 0 }}>🔔 Activity Notifications</h2>
+                            <p style={{ color: "var(--text-muted)", margin: "4px 0 0 0" }}>
+                                Recent interactions, message alerts, and updates.
+                            </p>
+                        </div>
+                    </div>
+
 
                     {loading ? (
                         <p style={{ textAlign: "center" }}>Loading notifications...</p>

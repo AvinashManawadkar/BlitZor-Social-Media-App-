@@ -1118,3 +1118,28 @@ body {
   border: 1px solid rgba(239, 68, 68, 0.4);
 }
 
+/* Universal Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.back-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: var(--primary-color);
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+

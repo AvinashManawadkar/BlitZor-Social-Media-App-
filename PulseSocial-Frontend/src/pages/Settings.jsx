@@ -133,7 +133,14 @@ function Settings() {
 
             <main className="main-content-area">
                 <div className="feed-container">
-                    <h2>⚙️ Profile Settings</h2>
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "20px" }}>
+                        <button className="back-btn" onClick={() => navigate(-1)} title="Go Back">
+                            ← Back
+                        </button>
+                        <h2 style={{ margin: 0 }}>⚙️ Profile & Account Settings</h2>
+                    </div>
+
+
 
                     {/* Tabs */}
                     <div style={{ display: "flex", gap: "10px", marginTop: "16px", marginBottom: "24px" }}>

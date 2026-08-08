@@ -243,7 +243,15 @@ function Profile() {
             <main className="main-content-area">
                 <div className="profile-container">
 
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+                        <button className="back-btn" onClick={() => navigate(-1)} title="Go Back">
+                            ← Back
+                        </button>
+                        <h3 style={{ margin: 0 }}>{profileUser.fullName}'s Profile</h3>
+                    </div>
+
                 {/* Cover Banner */}
+
                 <div
                     className="profile-cover"
                     style={{
