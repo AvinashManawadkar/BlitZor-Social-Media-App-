@@ -10,6 +10,20 @@ services:
         value: "update"
       - key: FILE_UPLOAD_DIR
         value: "uploads"
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: pulsesocial-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: pulsesocial-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: pulsesocial-db
+          property: password
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: "org.postgresql.Driver"
 
   # React + Vite Frontend Static Site (100% FREE by default on Render)
   - type: web
@@ -26,3 +40,9 @@ services:
         value: "https://pulsesocial-backend.onrender.com/api"
       - key: VITE_BACKEND_URL
         value: "https://pulsesocial-backend.onrender.com"
+
+databases:
+  - name: pulsesocial-db
+    plan: free
+    databaseName: pulse_social
+    user: pulsesocial_user
