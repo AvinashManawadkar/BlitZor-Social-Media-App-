@@ -11,11 +11,10 @@ services:
       - key: FILE_UPLOAD_DIR
         value: "uploads"
 
-  # React + Vite Frontend Static Site (100% FREE Tier)
+  # React + Vite Frontend Static Site (100% FREE by default on Render)
   - type: web
     name: pulsesocial-frontend
     runtime: static
-    plan: free
     buildCommand: "cd PulseSocial-Frontend && npm install && npm run build"
     staticPublishPath: "./PulseSocial-Frontend/dist"
     routes:
