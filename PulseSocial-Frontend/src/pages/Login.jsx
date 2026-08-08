@@ -50,12 +50,16 @@ function Login() {
             }
         } catch (err) {
             console.error("Login error details:", err);
-            const msg = err.response?.data?.message || err.response?.data || err.message || "Login failed. Check your network or credentials.";
-            setError(typeof msg === 'string' ? msg : "Login failed. Please verify credentials.");
+            const serverErr = err.response?.data;
+            const msg = typeof serverErr === 'string'
+                ? serverErr
+                : (serverErr?.message || serverErr?.error || err.message || "Invalid credentials. Check your email/username and password.");
+            setError(msg);
         } finally {
             setLoading(false);
         }
     };
+
 
 
     return (

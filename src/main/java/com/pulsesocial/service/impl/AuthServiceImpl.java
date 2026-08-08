@@ -36,19 +36,21 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String register(RegisterRequest request) {
+        String cleanEmail = request.getEmail() != null ? request.getEmail().trim().toLowerCase() : "";
+        String cleanUsername = request.getUsername() != null ? request.getUsername().trim() : "";
 
-        if (userRepository.existsByEmail(request.getEmail())) {
+        if (userRepository.existsByEmail(cleanEmail)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
         }
 
-        if (userRepository.existsByUsername(request.getUsername())) {
+        if (userRepository.existsByUsername(cleanUsername)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");
         }
 
         User user = new User();
-        user.setFullName(request.getFullName());
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
+        user.setFullName(request.getFullName() != null ? request.getFullName().trim() : "");
+        user.setUsername(cleanUsername);
+        user.setEmail(cleanEmail);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setBio("");
         user.setProfileImage("");
@@ -61,10 +63,13 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String login(LoginRequest request) {
-        Optional<User> optionalUser = userRepository.findByEmail(request.getEmail());
+        String input = request.getEmail() != null ? request.getEmail().trim() : "";
+
+        Optional<User> optionalUser = userRepository.findByEmail(input.toLowerCase())
+                .or(() -> userRepository.findByUsername(input));
 
         if (optionalUser.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid Email");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid Email or Username");
         }
 
         User user = optionalUser.get();
@@ -76,4 +81,5 @@ public class AuthServiceImpl implements AuthService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
         return jwtService.generateToken(userDetails);
     }
-}
+}
+
