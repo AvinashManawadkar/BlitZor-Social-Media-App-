@@ -1,8 +1,9 @@
 services:
-  # Spring Boot Java Backend Web Service (Docker)
+  # Spring Boot Java Backend Web Service (100% FREE Tier)
   - type: web
     name: pulsesocial-backend
     runtime: docker
+    plan: free
     dockerfilePath: ./Dockerfile
     envVars:
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
@@ -10,10 +11,11 @@ services:
       - key: FILE_UPLOAD_DIR
         value: "uploads"
 
-  # React + Vite Frontend Static Site
+  # React + Vite Frontend Static Site (100% FREE Tier)
   - type: web
     name: pulsesocial-frontend
     runtime: static
+    plan: free
     buildCommand: "cd PulseSocial-Frontend && npm install && npm run build"
     staticPublishPath: "./PulseSocial-Frontend/dist"
     routes:
